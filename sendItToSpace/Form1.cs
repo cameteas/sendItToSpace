@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,7 +14,8 @@ namespace sendItToSpace
     public partial class Form1 : Form
     {
         int scene = 1;
-
+        Random rand = new Random();
+        int cannonKill;
          
 
         public Form1()
@@ -31,6 +33,8 @@ namespace sendItToSpace
             button3.Text = null;
             button4.Text = null;
             button5.Text = null;
+            
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -61,12 +65,35 @@ namespace sendItToSpace
                     scene = 14;
                 break;
                 case 14:
-                    scene = 999;
+                    scene = 997;
+                    break;
+                case 107:
+                    scene = 997;
+                    break;
+                case 113:
+                    scene = 3;
+                        break;
+                case 997:
+                    scene = 1;
                     break;
             }
             
             switch (scene)
             {
+                case 1:
+                    textOutput.Text = "you work at amazon processing orders. You authorize or reject all orders that are placed on the website\n today you come into work and find that someone has ordered an hdmi cable and a toothbrush to the International space station\n\n what do you do with the order?";
+                    button1.Visible = true;
+                    button2.Visible = true;
+                    button3.Visible = false;
+                    button4.Visible = false;
+                    button5.Visible = false;
+
+                    button1.Text = "Authorize the order";
+                    button2.Text = "reject the order";
+                    button3.Text = null;
+                    button4.Text = null;
+                    button5.Text = null;
+                    break;
                 case 3:
                     textOutput.Text = "your supervisor bursts through the door. He screams at you for accepting a bad order \nhe sends you to jeffs office to decide your fate with the company, jeff is extatic that you accepted the order\nJeff sends you to blue origins research facilities to find a solution to get the parcel to space\n at blue origin you give the engineers some of your bright ideas to get the parcel into space";
                     button1.Visible = true;
@@ -97,18 +124,39 @@ namespace sendItToSpace
                     button5.Text = null;
                     break;
                 case 7:
-                    textOutput.Text = "'using less than you think is definetely a good rule of thumb' the engineers say\nyou go outside the engineers load the cannon with much less powder than you would think\n you load the parcel into the cannon, and an engineer lights the cannon\n\n the fuse runs down, 3,2,1 BOOM\n the cannon launches the parcel up up up\n but then you see it start to come down from the sky, not even close to getting into orbit.";
-                    button1.Visible = true;
-                    button2.Visible = true;
-                    button3.Visible = false;
-                    button4.Visible = false;
-                    button5.Visible = false;
+                    cannonKill = rand.Next(0, 5);
+                    if(cannonKill == 1)
+                    {
+                        textOutput.Text = "'using less than you think is definetely a good rule of thumb' the engineers say\nyou go outside the engineers load the cannon with much less powder than you would think\n you load the parcel into the cannon, and an engineer lights the cannon\n\n the fuse runs down, 3,2,1 BOOM\n the cannon launches the parcel up up up\n but then you see it start to come down from the sky, not even close to getting into orbit. \nas the parcel returns to the earth you hear an earpearcing shriek as someone is struck by the falling package";
+                        button1.Visible = true;
+                        button2.Visible = false;
+                        button3.Visible = false;
+                        button4.Visible = false;
+                        button5.Visible = false;
 
-                    button1.Text = "try again with a different amount of gunpowder";
-                    button2.Text = "go back to the drawing board";
-                    button3.Text = null;
-                    button4.Text = null;
-                    button5.Text = null;
+                        button1.Text = "cry yourself to sleep for the next few days then go to the jail and confess confess to the police how you killed someone in a freak accident, spend the rest of your life in jail.";
+                        button2.Text = null;
+                        button3.Text = null;
+                        button4.Text = null;
+                        button5.Text = null;
+                        scene = 107;
+                    }
+                    else
+                    {
+                        textOutput.Text = "'using less than you think is definetely a good rule of thumb' the engineers say\nyou go outside the engineers load the cannon with much less powder than you would think\n you load the parcel into the cannon, and an engineer lights the cannon\n\n the fuse runs down, 3,2,1 BOOM\n the cannon launches the parcel up up up\n but then you see it start to come down from the sky, not even close to getting into orbit.";
+                        button1.Visible = true;
+                        button2.Visible = true;
+                        button3.Visible = false;
+                        button4.Visible = false;
+                        button5.Visible = false;
+                    
+                        button1.Text = "try again with a different amount of gunpowder";
+                        button2.Text = "go back to the drawing board";
+                        button3.Text = null;
+                        button4.Text = null;
+                        button5.Text = null;
+                        
+                    }
                     break;
                 case 12:
                     textOutput.Text = "'ok' the engineers say\n\n they return to you in 12 hours, some calculations done, not very close to completing the entire calculation\n do you let them finish the calculation?";
@@ -138,7 +186,21 @@ namespace sendItToSpace
                     button4.Text = null;
                     button5.Text = null;
                     break;
-                case 
+                case 997:
+                    textOutput.Text = "You Lost \n\n Would you like to play again";
+                    button1.Visible = true;
+                    button2.Visible = true;
+                    button3.Visible = false;
+                    button4.Visible = false;
+                    button5.Visible = false;
+
+                    button1.Text = "Play Again";
+                    button2.Text = "quit";
+                    button3.Text = null;
+                    button4.Text = null;
+                    button5.Text = null;
+                    break;
+
 
             }
 
@@ -159,10 +221,17 @@ namespace sendItToSpace
                     break;
                 case 7:
                     scene = 3;
-                break;
+                    break;
                 case 8:
                     scene = 3;
-                break;
+                    break;
+                case 11:
+                    scene = 13;
+                    break;
+                case 997:
+                    scene = 998;
+                    break;
+                
             }
                     
             switch (scene)
@@ -175,9 +244,9 @@ namespace sendItToSpace
                     button4.Visible = false;
                     button5.Visible = false;
 
-                    button1.Text = "a little bit";
-                    button2.Text = "just the right amount";
-                    button3.Text = "way too much";
+                    button1.Text = null;
+                    button2.Text = null;
+                    button3.Text = null;
                     button4.Text = null;
                     button5.Text = null;
                     break;
@@ -196,18 +265,39 @@ namespace sendItToSpace
                     button5.Text = "use Space X";
                 break;
                 case 8:
-                    textOutput.Text = "'yes of course just eyeball it, its not like we are being paid thousands everyday to do work anyways' an engineer says\ndespite the engineers's sarcasm you eyeball it 'perfect you say as you dump the last of the gunpowder into the cannon \n\n an engineer reluctantly lights the fuse for you 3,2,1 BOOOOOM, the parcel moves blisteringly fast into the clouds\n you lose track of it in the sky, but the astronaut doesn't review the products on amazon.com so \nyou assume it never got to him, in reality the parcel made it all the way up to the ISS but no one had prepared for a parcel \n so the parce tapped against the ISS unbeknownst to anyone, although it did quite scare a small multicellular\nalien organism growing inside the ship.";
-                    button1.Visible = true;
-                    button2.Visible = true;
-                    button3.Visible = false;
-                    button4.Visible = false;
-                    button5.Visible = false;
+                    cannonKill = rand.Next(0, 10);
+                    if (cannonKill == 1)
+                    {
+                        textOutput.Text = "'yes of course just eyeball it, its not like we are being paid thousands everyday to do work anyways' an engineer says\ndespite the engineers's sarcasm you eyeball it 'perfect you say as you dump the last of the gunpowder into the cannon \n\n an engineer reluctantly lights the fuse for you 3,2,1 BOOOOOM, the parcel moves blisteringly fast into the clouds\n you lose track of it in the sky, but the astronaut doesn't review the products on amazon.com so \nyou assume it never got to him, in reality the parcel made it all the way up to the ISS but no one had prepared for a parcel \n so the parce tapped against the ISS unbeknownst to anyone, although it did quite scare a small multicellular\nalien organism growing inside the ship. as the parcel falls back to earth the pointed nosecone of the modified amazon parcel\n falls at blistering speed and just happens to impale the billionair warren buffet as he is on his morning jog\n ";
+                        button1.Visible = true;
+                        button2.Visible = false;
+                        button3.Visible = false;
+                        button4.Visible = false;
+                        button5.Visible = false;
 
-                    button1.Text = "try with a different amount of gunpowder";
-                    button2.Text = "go back to the drawing board";
-                    button3.Text = null;
-                    button4.Text = null;
-                    button5.Text = null;
+                        button1.Text = "cry yourself to sleep for multiple nights, you can't believe you killed warren buffet. confess to the police, go to jail for the rest of your life";
+                        button2.Text = null;
+                        button3.Text = null;
+                        button4.Text = null;
+                        button5.Text = null;
+                        scene = 107;
+                    }
+                    else
+                    {
+                        textOutput.Text = "'yes of course just eyeball it, its not like we are being paid thousands everyday to do work anyways' an engineer says\ndespite the engineers's sarcasm you eyeball it 'perfect you say as you dump the last of the gunpowder into the cannon \n\n an engineer reluctantly lights the fuse for you 3,2,1 BOOOOOM, the parcel moves blisteringly fast into the clouds\n you lose track of it in the sky, but the astronaut doesn't review the products on amazon.com so \nyou assume it never got to him, in reality the parcel made it all the way up to the ISS but no one had prepared for a parcel \n so the parce tapped against the ISS unbeknownst to anyone, although it did quite scare a small multicellular\nalien organism growing inside the ship.";
+                        button1.Visible = true;
+                        button2.Visible = true;
+                        button3.Visible = false;
+                        button4.Visible = false;
+                        button5.Visible = false;
+
+                        button1.Text = "try with a different amount of gunpowder";
+                        button2.Text = "go back to the drawing board";
+                        button3.Text = null;
+                        button4.Text = null;
+                        button5.Text = null;
+                    }
+                   
                     break;
                 case 11:
                     textOutput.Text = "'oh yeah We have a few of those, we don't like to use them becuase they can be faulty, but we can definitely give it a try'\n an engineer says'. 15 minutes later an engineer leads you to a room where they keep the teleporter.\n the engineers pose a problem, in order to make sure that you port it in the right place they need to do some calculations\n\n do you let the engineers take the time to calculate the port? ";
@@ -222,6 +312,58 @@ namespace sendItToSpace
                     button3.Text = null;
                     button4.Text = null;
                     button5.Text = null;
+                    break;
+                case 13:
+                    textOutput.Text = "You put the parcel into the teleporter, the engineers scoff at you, you will never get it they think\n you don't have a clue of where it would be so you just mash the keypad to enter in coordinates of where the ISS will be\n you press the button, a flash of light fills the room and then you wait";
+                    button1.Visible = false;
+                    button2.Visible = false;
+                    button3.Visible = false;
+                    button4.Visible = false;
+                    button5.Visible = false;
+
+                    button1.Text = null;
+                    button2.Text = null;
+                    button3.Text = null;
+                    button4.Text = null;
+                    button5.Text = null;
+
+                    Thread.Sleep(3000);
+                    int teleportLow = rand.Next(0,10);
+                    if(teleportLow == 1)
+                    {
+                        textOutput.Text = "You put the parcel into the teleporter, the engineers scoff at you, you will never get it they think\n you don't have a clue of where it would be so you just mash the keypad to enter in coordinates of where the ISS will be\n you press the button, a flash of light fills the room and then you wait\n\n you look at your phone to see that the astronaut rated the products meaning that he recieved them\n ";
+                        button1.Visible = true;
+                        button2.Visible = false;
+                        button3.Visible = false;
+                        button4.Visible = false;
+                        button5.Visible = false;
+
+                        button1.Text = "throw your arms up in victory";
+                        button2.Text = null;
+                        button3.Text = null;
+                        button4.Text = null;
+                        button5.Text = null;
+                    }
+                    else
+                    {
+                        textOutput.Text = "You put the parcel into the teleporter, the engineers scoff at you, you will never get it they think\n you don't have a clue of where it would be so you just mash the keypad to enter in coordinates of where the ISS will be\n you press the button, a flash of light fills the room and then you wait\n\n you look at your phone to see that the astronaut has not yet rated the product meaning that he probably hasn't gotten them. ";
+                        button1.Visible = true;
+                        button2.Visible = false;
+                        button3.Visible = false;
+                        button4.Visible = false;
+                        button5.Visible = false;
+
+                        button1.Text = "go back to the drawing board";
+                        button2.Text = null;
+                        button3.Text = null;
+                        button4.Text = null;
+                        button5.Text = null;
+                        scene = 113;
+                        
+                    }
+                    break;
+                case 998:
+                    this.Close();
                     break;
             }
         }
